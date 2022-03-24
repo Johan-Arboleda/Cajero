@@ -24,11 +24,15 @@ public class funciones extends AppCompatActivity {
         startActivity(intente);
     }
     public void iraRetirar(View view){
-        Intent intent = new Intent(getApplicationContext(), retirar.class);
+        String pass=getIntent().getStringExtra("password");
+        Intent intent = new Intent(getApplicationContext(), retirar.class)
+                .putExtra("password",pass);
         startActivity(intent);
     }
     public void iraTransferir(View view){
-        Intent intent = new Intent(getApplicationContext(), transferir.class);
+        String pass=getIntent().getStringExtra("password");
+        Intent intent = new Intent(getApplicationContext(), transferir.class)
+                .putExtra("password",pass);
         startActivity(intent);
     }
 

@@ -57,6 +57,33 @@ public class DataBase extends SQLiteOpenHelper {
             return 0;
     }
 
+    public boolean actualizarr(String clave, int saldo){
+        SQLiteDatabase Datos = this.getWritableDatabase();
+        ContentValues contentValues= new ContentValues();
+        contentValues.put("clave",clave);
+        contentValues.put("saldo",saldo);
+        Cursor cursor = Datos.rawQuery("update usuario set saldo='"+saldo+"'where clave =?", new  String[] {clave});
+        if(cursor.getCount()>0)
+            return true;
+        else
+            return false;
+
+    }
+
+    public Boolean actualizar(String clave, int saldo){
+        SQLiteDatabase Datos = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("clave",clave);
+        contentValues.put("saldo",saldo);
+        long result = Datos.update("usuario",contentValues,"clave="+clave,null );
+
+        if (result==-1) return false;
+        else
+            return true;
+
+    }
+
+
 
 
 
